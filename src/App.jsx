@@ -1,35 +1,80 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import topics from "./topics.json";
+
+console.log({ topics });
+
+const pick = arr => {
+  return arr[Math.floor(Math.random() * arr.length)];
+};
+
+const colorPalette = [
+  "#add8e6", // Light Blue
+  "#98fb98", // Pale Green
+  "#ffdab9", // Soft Peach
+  "#e6e6fa", // Lavender Mist
+  "#f5fffa", // Mint Cream
+  "#c0c0c0", // Silver Gray
+  "#ffebcd", // Blanched Almond
+  // "#8470ff", // Light Slate Blue
+  "#afeeee", // Pale Turquoise
+  "#fff0f5" // Lavender Blush
+];
+
+const generateInitialTopic = () => {
+  let topic = pick(topics);
+  return { ...topic, color: pick(colorPalette) };
+};
+
+const initialTopic = generateInitialTopic();
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currentTopic, setTopic] = useState(initialTopic);
+  const [topicHistory, setTopicHistory] = useState([initialTopic]);
+
+  const pickNewTopic = () => {
+    const topicsLength = topics.length;
+    const recentTopicList = topicHistory.slice(((topicHistory.length - 1) % topicsLength) * -1);
+    const newTopic =
+      pick(topics.filter(x => !recentTopicList.some(y => y.id === x.id))) || pick(topics);
+
+    newTopic.color = pick(colorPalette.filter(x => x !== currentTopic.color));
+    setTopic(newTopic);
+    setTopicHistory(prev => [...prev, newTopic]);
+  };
+
+  const back = () => {
+    if (topicHistory.length < 2) return;
+    const previousTopic = topicHistory[topicHistory.length - 2];
+    setTopic(previousTopic);
+    setTopicHistory(prev => prev.slice(0, prev.length - 1));
+  };
+
+  useEffect(() => {
+    document.body.style.background = currentTopic.color;
+  }, [currentTopic.color]);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div id="display">
+        {currentTopic && (
+          <>
+            <h1>{currentTopic.header}</h1>
+            <ul>
+              {currentTopic.examples.map(x => (
+                <li key={x}>{x}</li>
+              ))}
+            </ul>
+          </>
+        )}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <div id="control">
+        <button onClick={back} disabled={topicHistory.length < 2}>
+          Back
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <button onClick={pickNewTopic}>New topic</button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

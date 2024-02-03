@@ -1,0 +1,93 @@
+[
+  {
+    "id": "dating",
+    "header": "Dating & Relationships: 연애",
+    "examples": [
+      "Your ideal date",
+      "Your current partner",
+      "Why your ex is your ex",
+      "Dating horror stories",
+      "Long-distance relationships",
+      "Dealbreakers and must-haves"
+    ]
+  },
+  {
+    "id": "movies",
+    "header": "Movies: 영화",
+    "examples": ["A movie you like", "A movie you dislike", "A Korean movie", "Is the MCU good?"]
+  },
+  {
+    "id": "travel",
+    "header": "Travel: 여행",
+    "examples": [
+      "Somewhere you want to go",
+      "Somewhere you'll never go again",
+      "Travel horror stories",
+      "Travel successs stories",
+      "Underrated destinations",
+      "Overrated destinations"
+    ]
+  },
+  {
+    "id": "food",
+    "header": "Food: 음식",
+    "examples": [
+      "Favorite Korean food",
+      "A food you dislike",
+      "Restaurant recommendations",
+      "Things you cook at home",
+      "Best restaurant experience",
+      "Worst restaurant experience"
+    ]
+  },
+  {
+    "id": "school",
+    "header": "School: 학교",
+    "examples": [
+      "Favorite subject",
+      "A time you / somebody got in trouble at school",
+      "The best teacher you had",
+      "The worst teacher you had",
+      "Sports, clubs, after-school activities"
+    ]
+  },
+  {
+    "id": "music",
+    "header": "Music: 음악",
+    "examples": [
+      "Instruments you play",
+      "Greating things about K-pop",
+      "Negative aspects of K-pop",
+      "Music you liked growing up",
+      "First / worst / best / most recent concert experience"
+    ]
+  },
+  {
+    "id": "jobs",
+    "header": "Jobs: 직업",
+    "examples": [
+      "Your current job",
+      "Career changes",
+      "Best job you've had",
+      "Worst job you've had",
+      "A job you had during school",
+      "Horrifying customers"
+    ]
+  },
+  {
+    "id": "hobbies",
+    "header": "Hobbies: 취미",
+    "examples": ["You current hobbies", "A hobby you quit", "A hobby you want to start"]
+  },
+  {
+    "id": "language",
+    "header": "Language Learning: 어학",
+    "examples": [
+      "Ways you're studying Korean",
+      "Most confusing parts of Korean",
+      "Other langauges you've studied",
+      "Success stories",
+      "Epic fails"
+    ]
+  }
+]
